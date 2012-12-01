@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ToDoList.Models.ToDoList>
+@{
+    ViewBag.Title = "ToDo List";
+}
+<h1>
+    ToDo List</h1>
+<div class="addTask">
+    @using (Html.BeginForm("AddTask", "List"))
+    {
+        @Html.Editor("newTask")
+        <input type="submit" value="Add" class="actionButtons" />
+    }
+</div>
+
+@try
+{
+    <div>
+        @foreach (var t in Model)
+        {
+            Html.RenderPartial("CurrentTask", t);
+        }
+    </div>
+}
+catch
+{
+    <div>Возникли проблемы при подключении к серверу базы данных</div>
+}

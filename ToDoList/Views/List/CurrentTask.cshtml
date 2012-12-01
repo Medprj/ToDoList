@@ -1,0 +1,7 @@
+﻿@model ToDoList.Models.ToDoList
+@using (Html.BeginForm("RemoveTask", "List"))
+{
+    <div class="task">@Model.Task</div>
+    @Html.Hidden("taskId", Model.Id)
+    <input type="submit" value="Выполнено" class="actionButtons" />
+}
